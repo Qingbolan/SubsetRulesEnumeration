@@ -1,7 +1,5 @@
 from tqdm import tqdm
-
 from rule.rule_test import *
-# from tool.tools import comb_compute
 
 def comb_compute(n, k, device):
     if k * 2 > n:

@@ -1,7 +1,7 @@
 import random
 import sys
 import torch
-from PyQt5.QtCore import Qt, QThread, pyqtSlot, QThreadPool
+from PyQt5.QtCore import Qt
 from core import core_selection
 from dataBase.database import *
 from PyQt5.QtGui import QIntValidator, QIcon
@@ -14,8 +14,12 @@ class EmittingStream(QObject):
 
     def write(self, text):
         self.text_written.emit(str(text))
-        # self.text_written.ensureCursorVisible()
         QApplication.processEvents()
+        self.flush()
+
+    def flush(self):
+        pass
+
 
 
 class MyWidget(QWidget):
