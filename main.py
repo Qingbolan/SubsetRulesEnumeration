@@ -1,6 +1,5 @@
 import random
 import sys
-import torch
 from PyQt5.QtCore import Qt
 from core import core_selection
 from dataBase.database import *
@@ -34,10 +33,6 @@ class MyWidget(QWidget):
         self.edit_n = None
         self.edit_m = None
         self.Database = Database()
-
-        # 设置 PyTorch 使用 GPU
-        self.device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-        print(f"Using device: {self.device}")
 
         # 设置窗口标题和大小
         self.setWindowTitle('最佳样本生成器v0.1')
@@ -179,7 +174,7 @@ class MyWidget(QWidget):
 
         self.clean_console()
         # 在文本框中输出结果
-        string = core_selection(self.device,self.Database, m, n, k, j, s)
+        string = core_selection(self.Database, m, n, k, j, s)
         self.result_output.clear()
         self.result_output.setPlainText(string)
 

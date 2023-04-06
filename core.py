@@ -23,7 +23,7 @@ def example_result(n, k, j, s):
     return reS, reL
 
 
-def core_selection(device,db, m, n, k, j, s):
+def core_selection(db, m, n, k, j, s):
     localtime = time.asctime(time.localtime(time.time()))
     if m * n * k * j * s != 0:
         # Step1: Query in the current database
@@ -32,7 +32,7 @@ def core_selection(device,db, m, n, k, j, s):
         if not isGet:
             print("compute right now.")
             # reS, reL = example_result(n, k, j, s)
-            reS, reL = enumerate_core(device,n, k, j, s)
+            reS, reL = enumerate_core(n, k, j, s)
             if not rule_check(reS, n, k, j, s):
                 print(">rule check Fail!")
             else:
